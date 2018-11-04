@@ -11,7 +11,7 @@ BLUE_TOOTH_MIN = -90
 TMP_LNG = '0'
 
 
-# 判断是否重复
+# 判断是否重复,去重复
 def is_repeat(lng):
     # return False
     global TMP_LNG
@@ -20,6 +20,14 @@ def is_repeat(lng):
     TMP_LNG = lng;
     return False;
 
+# 判断是否有No data，去No data
+def is_nodata(wifi,blue_tooth):
+    if(wifi == 'No data' ):
+        return True
+    elif(blue_tooth == 'No data'):
+        return True
+    else:
+        return False
 
 # 处理数据(根据阈值去掉相应的数据然后取平均)
 def get_mean_and_detele_useless_data(min_num, max_num, data=[]):
@@ -46,6 +54,10 @@ def process_data(rows):
         wifi_arr = json.loads(row[2])
         blue_tooth_arr = json.loads(row[3])
         sensor_arr = json.loads(row[4])
+
+        # 去No data
+        if (is_nodata(wifi_arr,blue_tooth_arr)):
+            continue;
 
         # 重复则继续
         if (is_repeat(lng)):
