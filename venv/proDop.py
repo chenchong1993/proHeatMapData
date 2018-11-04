@@ -1,7 +1,7 @@
 import json
 
 def readfile():
-    f = open("E:\python-workspace\proHeatMapData\\200HObs.txt", 'r')
+    f = open("E:\python-workspace\proHeatMapData\\200HObs", 'r')
     str = f.read()
     return str
 filestr = readfile()
@@ -22,11 +22,14 @@ for item in filelist:
     PDOP = float(itemlist[6])
     GDOP = float(itemlist[7])
     Rss = float(itemlist[8][:-1])
-    HDOPdic[str(i)] = [B,L,HDOP]
-    VDOPdic[str(i)] = [B, L, VDOP]
-    PDOPdic[str(i)] = [B, L, PDOP]
-    GDOPdic[str(i)] = [B, L, GDOP]
-    Rssdic[str(i)] = [B, L, Rss]
+    if  ((38.24762<B)and(B<38.24783) and(114.34855<L)and(L<114.34933)):
+        HDOPdic[str(i)] = [B,L,HDOP]
+        VDOPdic[str(i)] = [B,L, VDOP]
+        PDOPdic[str(i)] = [B,L, PDOP]
+        GDOPdic[str(i)] = [B,L, GDOP]
+        Rssdic[str(i)] = [B,L ,Rss]
+    else:
+        pass
     i = i + 1
     # print(HDOP,VDOP,PDOP,GDOP,Rss)
 HDOPjs= json.dumps(HDOPdic)
