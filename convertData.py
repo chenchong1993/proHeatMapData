@@ -84,10 +84,12 @@ for item in range(285):
 
     #     print(wifi[str(item+1)][key])
     #
-    f1Wifi[item+1] = [coo[str(item+1)][0],coo[str(item+1)][1],wifi_val]
-    f1Blu[item + 1] = [coo[str(item + 1)][0], coo[str(item + 1)][1], blue_tooth_val]
+    f1Wifi[item+1] = [coo[str(item+1)][1],coo[str(item+1)][0],wifi_val]
+    f1Blu[item + 1] = [coo[str(item + 1)][1], coo[str(item + 1)][0], blue_tooth_val]
 
     # print(pointLine,',')
     # print(item+1,wifi_val,blue_tooth_val)
 jsblu = json.dumps(f1Blu)
+jswifi = json.dumps(f1Wifi)
 print(jsblu)
+print(jswifi)
