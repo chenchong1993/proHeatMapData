@@ -70,13 +70,20 @@ def csvToDic():
 # ------------------------------------main------------------------------------
 
 # coo = loadcoo()
+
 wifi = loadwifi()
 blu = loadblu()
 coo = csvToDic()
 point = []
 f1Wifi = {}
 f1Blu = {}
-for item in range(285):
+# print(coo)
+# print(wifi)
+#1-285
+#286-626
+#627-955
+
+for item in range(955):
     # print(wifi[str(item+1)])
     for key in wifi[str(item+1)]:
         wifi_val = get_mean_and_detele_useless_data(WIFI_MIN, WIFI_MAX, wifi[str(item+1)])
